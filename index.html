@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What Weeks of Supply Reveals About Retail Inventory Health</title>
+<meta name="description" content="Understand the weeks-of-supply metric, how it connects inventory to rate of sale, what high and low values signal, and why new products need extra caution." />
+<link rel="canonical" href="" />
+<script>document.querySelector('link[rel="canonical"]').href = window.location.href;</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"What Weeks of Supply Reveals About Retail Inventory Health","publisher":{"@type":"Organization","name":"usbrandlaunch.com"}}
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --terra:#7c2d12;
+  --burnt:#c2410c;
+  --peach:#fed7aa;
+  --sand:#fef3c7;
+  --cream:#fffbf7;
+  --ink:#1c1917;
+  --warm:#44403c;
+  --muted:#78716c;
+  --border:#e7e5e4;
+  --white:#ffffff;
+}
+
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
+
+/* ═══ TOP RULE ═══ */
+.top-rule{height:6px;background:linear-gradient(to right,var(--terra),var(--burnt),#f97316,var(--burnt),var(--terra));}
+
+/* ═══ MASTHEAD ═══ */
+.masthead{
+  background:var(--white);
+  border-bottom:2px solid var(--ink);
+  padding:18px 56px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:24px;
+}
+.masthead-logo{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.3rem;
+  font-weight:700;
+  color:var(--ink);
+  letter-spacing:-0.02em;
+}
+.masthead-logo em{font-style:italic;color:var(--burnt);}
+.masthead-rule{height:1px;background:var(--border);}
+.masthead-meta{
+  font-size:0.7rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:500;
+  text-align:right;
+  white-space:nowrap;
+}
+
+/* ═══ EDITORIAL HERO — full-bleed, no sidebar ═══ */
+.editorial-hero{
+  background:var(--ink);
+  padding:80px 56px 0;
+  position:relative;
+  overflow:hidden;
+}
+.editorial-hero::before{
+  content:'WOS';
+  position:absolute;
+  right:-40px;bottom:-40px;
+  font-family:'Libre Baskerville',serif;
+  font-size:22rem;
+  font-weight:700;
+  color:rgba(255,255,255,0.02);
+  line-height:1;
+  pointer-events:none;
+}
+.eh-inner{max-width:1080px;margin:0 auto;}
+.eh-tag{
+  font-size:0.68rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--burnt);
+  font-weight:700;
+  margin-bottom:18px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.eh-tag::before{content:'';display:block;width:32px;height:2px;background:var(--burnt);}
+.editorial-hero h1{
+  font-family:'Libre Baskerville',serif;
+  font-size:3.4rem;
+  font-weight:700;
+  color:var(--white);
+  line-height:1.1;
+  max-width:900px;
+  padding-bottom:48px;
+  position:relative;
+  z-index:1;
+}
+.editorial-hero h1 em{font-style:italic;color:var(--peach);}
+
+/* ═══ STAT ROW ═══ */
+.stat-row{
+  background:var(--burnt);
+  padding:0 56px;
+}
+.stat-row-inner{
+  max-width:1080px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-left:1px solid rgba(255,255,255,0.15);
+}
+.stat-cell{
+  padding:24px 28px;
+  border-right:1px solid rgba(255,255,255,0.15);
+}
+.stat-cell .sc-n{
+  font-family:'Libre Baskerville',serif;
+  font-size:2.2rem;
+  font-weight:700;
+  color:var(--white);
+  line-height:1;
+  margin-bottom:4px;
+}
+.stat-cell .sc-l{
+  font-size:0.68rem;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  color:rgba(255,255,255,0.6);
+  font-weight:600;
+  margin-bottom:4px;
+}
+.stat-cell .sc-d{font-size:0.78rem;color:rgba(255,255,255,0.55);line-height:1.5;}
+
+/* ═══ ANCHOR BAND ═══ */
+.anchor-band{
+  background:var(--peach);
+  border-bottom:2px solid var(--burnt);
+  padding:0 56px;
+}
+.anchor-band-inner{
+  max-width:1080px;
+  margin:0 auto;
+  padding:28px 0;
+  display:flex;
+  gap:20px;
+  align-items:flex-start;
+}
+.ab-label{
+  flex-shrink:0;
+  background:var(--burnt);
+  color:var(--white);
+  font-size:0.62rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.12em;
+  padding:4px 10px;
+  border-radius:3px;
+  margin-top:3px;
+}
+.anchor-band-inner p{
+  font-family:'Libre Baskerville',serif;
+  font-style:italic;
+  font-size:1.05rem;
+  line-height:1.78;
+  color:var(--terra);
+}
+.anchor-band-inner a{
+  color:var(--terra);
+  font-weight:700;
+  font-style:normal;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+/* ═══ THREE-COLUMN EDITORIAL BODY ═══ */
+.editorial-body{
+  max-width:1080px;
+  margin:0 auto;
+  padding:60px 56px 80px;
+}
+
+/* ═══ BIG CALC SHOWCASE ═══ */
+.big-calc{
+  background:var(--ink);
+  border-radius:0;
+  padding:44px 48px;
+  margin:0 -56px 52px;
+  display:grid;
+  grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;
+  gap:0;
+  align-items:center;
+  text-align:center;
+}
+.bc-cell{padding:0 24px;}
+.bc-cell .bcl{
+  font-size:0.66rem;
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  color:rgba(255,255,255,0.35);
+  font-weight:700;
+  margin-bottom:8px;
+}
+.bc-cell .bcv{
+  font-family:'Libre Baskerville',serif;
+  font-size:3rem;
+  font-weight:700;
+  color:var(--peach);
+  line-height:1;
+}
+.bc-cell .bcd{font-size:0.76rem;color:rgba(255,255,255,0.4);margin-top:6px;line-height:1.4;}
+.bc-op{
+  font-family:'Libre Baskerville',serif;
+  font-size:2.5rem;
+  font-weight:700;
+  color:rgba(255,255,255,0.18);
+}
+.bc-result .bcl{color:rgba(255,255,255,0.35);}
+.bc-result .bcv{color:#fbbf24;font-size:3.4rem;}
+
+/* ═══ SECTION HEADINGS ═══ */
+.editorial-body h2{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.5rem;
+  font-weight:700;
+  color:var(--ink);
+  margin:48px 0 18px;
+  padding-bottom:14px;
+  border-bottom:3px solid var(--ink);
+}
+.editorial-body p{
+  font-size:1rem;
+  line-height:1.9;
+  margin-bottom:20px;
+  color:var(--warm);
+}
+
+/* ═══ SIGNAL STRIP — horizontal 4 tiles ═══ */
+.signal-strip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:0;
+  margin:40px -56px;
+  border-top:2px solid var(--ink);
+  border-bottom:2px solid var(--ink);
+}
+.ss-tile{
+  padding:24px 22px;
+  border-right:1px solid var(--border);
+}
+.ss-tile:last-child{border-right:none;}
+.ss-tile .sst-indicator{
+  width:100%;
+  height:6px;
+  border-radius:3px;
+  margin-bottom:14px;
+}
+.ind-red{background:#ef4444;}
+.ind-yellow{background:#f59e0b;}
+.ind-green{background:#22c55e;}
+.ind-blue{background:#3b82f6;}
+.ss-tile h3{
+  font-family:'Libre Baskerville',serif;
+  font-size:0.95rem;
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:8px;
+}
+.ss-tile p{font-size:0.82rem;color:var(--muted);margin:0;line-height:1.65;}
+
+/* ═══ TWO COLUMN TEXT ═══ */
+.two-col-text{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:44px;
+  margin:10px 0 0;
+}
+
+/* ═══ PULL QUOTE ═══ */
+.pull-quote{
+  margin:44px -56px;
+  padding:36px 80px;
+  background:var(--sand);
+  border-top:2px solid var(--burnt);
+  border-bottom:2px solid var(--burnt);
+  text-align:center;
+}
+.pull-quote blockquote{
+  font-family:'Libre Baskerville',serif;
+  font-style:italic;
+  font-size:1.5rem;
+  color:var(--terra);
+  line-height:1.55;
+  max-width:700px;
+  margin:0 auto;
+}
+.pull-quote cite{
+  display:block;
+  margin-top:14px;
+  font-size:0.76rem;
+  font-style:normal;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  color:var(--burnt);
+}
+
+/* ═══ CAUTION BOX ═══ */
+.caution-box{
+  border:2px solid var(--burnt);
+  border-radius:0;
+  padding:24px 28px;
+  margin:36px 0;
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+  background:var(--white);
+}
+.caution-box .cb-icon{font-size:1.6rem;flex-shrink:0;}
+.caution-box .cb-body h3{
+  font-family:'Libre Baskerville',serif;
+  font-size:0.95rem;
+  font-weight:700;
+  color:var(--terra);
+  margin-bottom:6px;
+}
+.caution-box .cb-body p{font-size:0.88rem;color:var(--warm);margin:0;line-height:1.7;}
+
+/* ═══ FOOTER ═══ */
+footer{
+  background:var(--ink);
+  border-top:6px solid var(--burnt);
+  padding:30px 56px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+footer .fl{
+  font-family:'Libre Baskerville',serif;
+  font-size:0.92rem;
+  color:rgba(255,255,255,0.3);
+}
+footer .fl span{color:var(--peach);}
+footer .fr{
+  font-size:0.7rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.2);
+}
+
+@media(max-width:900px){
+  .masthead{grid-template-columns:1fr;padding:16px 24px;}
+  .masthead-rule,.masthead-meta{display:none;}
+  .editorial-hero{padding:60px 24px 0;}
+  .editorial-hero h1{font-size:2rem;}
+  .stat-row{padding:0 24px;}
+  .stat-row-inner{grid-template-columns:1fr 1fr;}
+  .anchor-band{padding:0 24px;}
+  .editorial-body{padding:40px 24px 60px;}
+  .big-calc{margin:0 -24px 40px;padding:28px 16px;grid-template-columns:1fr;gap:12px;}
+  .bc-op{display:none;}
+  .signal-strip{grid-template-columns:1fr 1fr;margin:30px -24px;}
+  .two-col-text{grid-template-columns:1fr;}
+  .pull-quote{margin:36px -24px;padding:28px 24px;}
+  footer{flex-direction:column;gap:10px;text-align:center;padding:24px;}
+}
+</style>
+</head>
+<body>
+
+<div class="top-rule"></div>
+
+<div class="masthead">
+  <div class="masthead-logo">US<em>Brand</em>Launch</div>
+  <div class="masthead-rule"></div>
+  <div class="masthead-meta">US Market Intelligence &bull; Inventory Diagnostics</div>
+</div>
+
+<div class="editorial-hero">
+  <div class="eh-inner">
+    <div class="eh-tag">Inventory Health Metric</div>
+    <h1>What <em>Weeks of Supply</em> Reveals About Retail Inventory Health</h1>
+  </div>
+</div>
+
+<div class="stat-row">
+  <div class="stat-row-inner">
+    <div class="stat-cell">
+      <div class="sc-l">Metric Type</div>
+      <div class="sc-n">WOS</div>
+      <div class="sc-d">Weeks of Supply — time-based inventory diagnostic</div>
+    </div>
+    <div class="stat-cell">
+      <div class="sc-l">Inputs Required</div>
+      <div class="sc-n">2</div>
+      <div class="sc-d">On-hand units and weekly rate of sale</div>
+    </div>
+    <div class="stat-cell">
+      <div class="sc-l">New Product Caution</div>
+      <div class="sc-n">&lt;8wk</div>
+      <div class="sc-d">Sales history under 8 weeks needs extra interpretation care</div>
+    </div>
+    <div class="stat-cell">
+      <div class="sc-l">Best Read As</div>
+      <div class="sc-n">Trend</div>
+      <div class="sc-d">Multiple periods reveal more than any single snapshot</div>
+    </div>
+  </div>
+</div>
+
+<div class="anchor-band">
+  <div class="anchor-band-inner">
+    <span class="ab-label">Context</span>
+    <p>Inventory figures become more meaningful when they are connected to the rate at which products are leaving stores rather than viewed as standalone unit counts. Within <a href="https://usbrandlaunch.com">US market intelligence</a>, weeks of supply can therefore serve as a focused diagnostic metric for understanding whether stock levels appear balanced relative to recent movement.</p>
+  </div>
+</div>
+
+<div class="editorial-body">
+
+  <div class="big-calc">
+    <div class="bc-cell">
+      <div class="bcl">On-Hand Units</div>
+      <div class="bcv">4,800</div>
+      <div class="bcd">Current inventory count</div>
+    </div>
+    <div class="bc-op">÷</div>
+    <div class="bc-cell">
+      <div class="bcl">Weekly Rate of Sale</div>
+      <div class="bcv">600</div>
+      <div class="bcd">Units sold per week</div>
+    </div>
+    <div class="bc-op">=</div>
+    <div class="bc-cell bc-result">
+      <div class="bcl">Weeks of Supply</div>
+      <div class="bcv">8.0</div>
+      <div class="bcd">Weeks before stockout at current pace</div>
+    </div>
+  </div>
+
+  <h2>What Weeks of Supply Actually Measures</h2>
+  <p>Weeks of supply is a metric that expresses how many weeks the current on-hand inventory is expected to last at the established rate of sale. It converts a static inventory count into a time-based figure by relating the stock level to the pace at which products are actually being purchased. Rather than asking how many units are currently in the warehouse or on the shelf, weeks of supply asks how long those units are likely to sustain sales before inventory runs out — providing a forward-looking dimension that raw stock counts simply cannot offer.</p>
+  <p>The metric brings together two pieces of information that are individually incomplete. An inventory count of five thousand units could be adequate, excessive, or dangerously low depending entirely on how quickly those units are selling. A weekly rate of sale of five hundred units makes five thousand units a ten-week supply — a position most retail contexts would consider reasonable. A weekly rate of fifty units makes five thousand units a hundred-week supply, a position that almost certainly indicates a problem with movement rather than a comfortable safety cushion that protects the brand.</p>
+  <p>Connecting inventory to rate of sale in this way allows buyers, brand managers, and supply chain teams to evaluate stock positions with a shared reference point that accounts for demand. The metric is simple in construction but provides a meaningful diagnostic dimension that pure inventory counts cannot offer, making it a useful baseline tool in any retail inventory review conversation regardless of how complex the surrounding analysis becomes.</p>
+
+  <div class="signal-strip">
+    <div class="ss-tile">
+      <div class="sst-indicator ind-red"></div>
+      <h3>Stockout Risk</h3>
+      <p>Very low WOS with no replenishment in transit. Risk of lost sales if movement continues and inventory runs out before new stock arrives at the shelf.</p>
+    </div>
+    <div class="ss-tile">
+      <div class="sst-indicator ind-yellow"></div>
+      <h3>Launch Loading</h3>
+      <p>High WOS right after initial inventory build. Expected short-term — monitor for normalization as the product sells through into consumer hands.</p>
+    </div>
+    <div class="ss-tile">
+      <div class="sst-indicator ind-green"></div>
+      <h3>Balanced Position</h3>
+      <p>WOS aligned with rate of sale and lead times. No immediate stockout or excess concern that requires urgent replenishment or markdown action.</p>
+    </div>
+    <div class="ss-tile">
+      <div class="sst-indicator ind-blue"></div>
+      <h3>Demand Shift</h3>
+      <p>WOS changing significantly week-over-week. Rate of sale may have shifted — investigate before using old averages to interpret the current figure.</p>
+    </div>
+  </div>
+
+  <h2>What Unusually High or Low Values Indicate</h2>
+  <div class="two-col-text">
+    <div>
+      <p>A very low weeks-of-supply figure indicates that current inventory will be exhausted in a short period if the rate of sale continues at its recent pace. This position represents a stockout risk — the possibility that consumer demand will continue but inventory will run out before a replenishment shipment arrives. For a brand with long lead times or limited replenishment flexibility, a low weeks-of-supply figure requires immediate attention because the time available to respond shrinks with each passing week of continued movement at stores.</p>
+      <p>A very high weeks-of-supply figure tells a different story. Unusually high values can indicate that the product is moving more slowly than expected relative to the inventory that was brought in, resulting in stock that could take many months to clear at the current pace. This can arise from launch loading — where an initial order was sized optimistically relative to actual consumer demand — from a sudden decline in movement, or from expanded distribution that added inventory without proportionally increasing sell-through velocity at store level.</p>
+    </div>
+    <div>
+      <p>Neither extreme is automatically a crisis, and both require context before conclusions can be drawn. A low weeks-of-supply figure during a strong promotional period might be entirely expected and healthy from a demand perspective. A high weeks-of-supply figure immediately after a major inventory build for a seasonal launch might reflect timing rather than poor performance. The value of tracking the metric over time is that it creates the context needed to distinguish between expected fluctuation and genuine inventory health problems requiring active management.</p>
+      <p>High values warrant examination of whether the rate of sale is structurally low or temporarily suppressed by a specific and addressable factor such as placement location, lack of consumer awareness, or temporary competitive pricing pressure. Structurally low movement requires a different response than temporarily suppressed movement, and the weeks-of-supply trend over time is what reveals which situation a brand is actually facing rather than experiencing a brief anomaly in an otherwise healthy performance trajectory.</p>
+    </div>
+  </div>
+
+  <div class="pull-quote">
+    <blockquote>"A weeks-of-supply number without a trend is a photograph without a story — it captures a moment but reveals nothing about direction."</blockquote>
+    <cite>US Market Intelligence Principle</cite>
+  </div>
+
+  <h2>Why the Trend Matters More Than a Single Snapshot</h2>
+  <p>A single weeks-of-supply figure read in isolation provides a starting point for inquiry but not a complete answer. The figure at any given moment reflects the inventory level and rate-of-sale average at that specific point — neither of which is necessarily representative of the normal operating range for the product. A snapshot taken during an unusually strong sales week will produce a lower-than-typical reading, while a snapshot taken the week after a large inventory receipt will produce a higher-than-typical reading. Neither snapshot describes the product's true long-term inventory pattern.</p>
+  <p>Tracking weeks of supply across multiple consecutive periods reveals the pattern that a single reading cannot show. A weeks-of-supply value that has been declining consistently over eight weeks indicates that inventory is eroding relative to rate of sale — a meaningful signal warranting replenishment planning attention. A value rising consistently over the same period indicates that inventory is accumulating relative to movement — warranting attention from the demand side of the equation. The trend provides the insight that isolated data points simply cannot deliver on their own.</p>
+  <p>Interpreting the trend also requires attention to what else is happening in the same period. A declining trend accompanied by genuine demand increase is fundamentally different from the same trend caused by inventory attrition without corresponding sales growth. Building a practice of reviewing weeks of supply alongside rate-of-sale data and inventory receipt history gives the metric the context it requires to produce genuinely useful conclusions about inventory health rather than numbers that prompt questions without actually answering them for the people managing the account.</p>
+
+  <h2>Additional Caution for New Products With Limited Sales History</h2>
+  <p>Products new to retail carry an additional complication that makes weeks-of-supply interpretation more challenging than for established items with stable sales histories. A new product may have been on shelf for only a few weeks, meaning its rate of sale is based on a very limited number of observations. If those early weeks were unusually strong — driven by novelty purchasing, introductory placement, or early-adopter interest — using that rate of sale to calculate weeks of supply may produce an overly optimistic picture of how quickly the current inventory will actually move in subsequent weeks as the novelty effect normalizes.</p>
+  <p>The opposite problem occurs just as easily for new products. An initial period of slow movement while consumers discover and trial the product may depress the early rate-of-sale average, producing a high weeks-of-supply figure that suggests excess inventory when the product may simply be in its early awareness-building phase. Using a limited and potentially unrepresentative early sales history to make inventory decisions requires explicit acknowledgment of the uncertainty involved, rather than treating the calculation as if it carried the same reliability as one based on twelve or more months of stable consumer demand data.</p>
+  <p>For new products, weeks of supply is most useful as a directional indicator to be reviewed frequently and updated as the sales history extends. Flagging the metric with explicit notation about the number of selling weeks included in the rate-of-sale calculation helps ensure that everyone reviewing the figure understands the degree of confidence that the underlying data actually supports, rather than treating a mathematically clean number as more reliable than the limited history behind it warrants.</p>
+
+  <div class="caution-box">
+    <div class="cb-icon">⚠️</div>
+    <div class="cb-body">
+      <h3>New Product Caution</h3>
+      <p>For products with fewer than eight weeks of selling history, treat the weeks-of-supply figure as directional rather than definitive. The rate-of-sale average is still forming, and any inventory calculation built on it carries more uncertainty than the final number alone suggests. Note the selling-week count whenever sharing this metric with buyers or internal teams.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="fl">&copy; <span>2026</span> usbrandlaunch.com &mdash; All Rights Reserved</div>
+  <div class="fr">US Market Intelligence Series</div>
+</footer>
+
+</body>
+</html>
